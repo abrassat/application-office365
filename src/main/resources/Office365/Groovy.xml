@@ -359,7 +359,7 @@ def defaultSitesList() {
   for (site in sites) {
     def driveURL = this.getDriveURL(site) + "search(q='${escapetool.url(text)}')";
     def res = this.getGraphApiData(driveURL);
-    this.debug("{{html}}{{{ ${driveURL} ${res} }}}{{/html}}")
+    this.debug("{{{ ${driveURL} ${res} }}}")
     results.put(site, res);
   }
   return results;
