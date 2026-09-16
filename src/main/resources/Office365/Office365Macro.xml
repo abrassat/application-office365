@@ -587,7 +587,7 @@ This examples uses an XWiki URL. The document might not be allowed to view witho
 
  escapetool = new org.xwiki.velocity.tools.EscapeTool();
  azureAuth = xwiki.parseGroovyFromPage("Office365.Groovy")
- azureAuth.setXWiki(xwiki, xcontext, doc)
+ azureAuth.setXWiki(context)
 
 def width = xcontext.macro.params.width;
 def height = xcontext.macro.params.height;

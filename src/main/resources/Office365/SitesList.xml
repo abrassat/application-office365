@@ -40,7 +40,7 @@
 println ""
 
 def azureAuth = xwiki.parseGroovyFromPage("Office365.Groovy")
-azureAuth.setXWiki(xwiki, xcontext, doc)
+azureAuth.setXWiki(context)
 
 if (!azureAuth.authenticate()) {
   println """
