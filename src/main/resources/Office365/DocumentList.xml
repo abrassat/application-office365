@@ -76,7 +76,7 @@ ${services.localization.render('office365.documentlist.searchterm')}: &lt;input 
         println """
 {{html clean=false}}
 &lt;iframe
-  src="${services.rendering.escape(item.webUrl.replaceAll("action=default","action=embedview"), doc.getSyntax())}"
+  src="${escapetool.xml(item.webUrl.replaceAll("action=default","action=embedview"))}"
   width="100%" height="1000"&gt;
 &lt;/iframe&gt;
 {{/html}}
