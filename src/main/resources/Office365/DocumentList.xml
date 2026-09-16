@@ -71,11 +71,13 @@ ${services.localization.render('office365.documentlist.searchterm')}: &lt;input 
     }
     for (item in res.value) {
       counter++;
-      println """* [[${counter}&gt;&gt;||queryString="counter=${counter}"]] - ${item.name} - [[edit&gt;&gt;url:${item.webUrl}]] (Site: ${site})"""
+      println """* [[${counter}&gt;&gt;||queryString="counter=${counter}"]] - ${services.rendering.escape(item.name, doc.getSyntax())} - [[edit&gt;&gt;url:${services.rendering.escape(item.webUrl, doc.getSyntax())}]] (Site: ${services.rendering.escape(site, doc.getSyntax())})"""
       if ("${counter}"==request.counter) {
         println """
 {{html clean=false}}
-&lt;iframe src="${item.webUrl.replaceAll("action=default","action=embedview")}" width="100%" height="1000"&gt;
+&lt;iframe
+  src="${services.rendering.escape(item.webUrl.replaceAll("action=default","action=embedview"), doc.getSyntax())}"
+  width="100%" height="1000"&gt;
 &lt;/iframe&gt;
 {{/html}}
 """
