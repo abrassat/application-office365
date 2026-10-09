@@ -39,19 +39,19 @@
   <content>{{groovy}}
 
 def azureAuth = xwiki.parseGroovyFromPage("Office365.Groovy")
-azureAuth.setXWiki(xwiki, xcontext, doc)
+azureAuth.setXWiki(context)
 
 if (!azureAuth.authenticate()) {
   println """
 {{warning}}
-${services.localization.render('office365.cannotauthenticate')}
+${services.rendering.escape(services.localization.render('office365.cannotauthenticate'), doc.getSyntax())}
 {{/warning}}
 """
 } else {
   println "Auth success"
 } 
 
-println "State: ${request.state}"
+println "State: ${services.rendering.escape(request.state, doc.getSyntax())}"
 println azureAuth.showDebug()
 
 {{/groovy}}</content>
